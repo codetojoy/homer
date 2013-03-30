@@ -1,0 +1,44 @@
+
+apply plugin: 'groovy'
+
+configurations {
+    releaseJars
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy-all:1.6.4'
+    releaseJars 'org.codehaus.groovy:groovy-all:1.6.4'
+}
+
+task init {
+    delete "${buildDir}/jars"
+    mkdir "${buildDir}/jars"
+    delete stagingDir
+    mkdir stagingDir
+}
+
+task copyReleaseJars(type: Copy, dependsOn: 'init') {
+    into "${buildDir}/jars"
+    from configurations.releaseJars
+}
+
+jar.archiveName "${project.deliverable}.jar"
+jar.manifest {
+    attributes 'Main-Class' : project.mainClass 
+    attributes 'Class-Path' : 'jars/groovy-all-1.6.4.jar'
+}
+
+task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) << {
+    ant.zip(destfile: "${buildDir}/${project.deliverable}.zip") {
+        zipfileset(dir: "${buildDir}/jars", prefix: "jars")
+        zipfileset(file: "${buildDir}/libs/${project.deliverable}.jar")
+        zipfileset(file: "resources/homer.properties", prefix: "resources")
+    }
+
+    ant.unzip(src: "${buildDir}/${project.deliverable}.zip", dest: project.stagingDir)
+}
+

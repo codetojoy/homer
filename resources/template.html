@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="../lib/jquery-1.6.3.min.js"></script>
+    <script type="text/javascript" src="../lib/js/jquery-ui-1.8.16.custom.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/cupertino/jquery-ui-1.8.16.custom.css"></link>
+
+    <script>
+        $(function() {
+            $( "#accordion" ).accordion({ autoHeight : false, clearStyle : true});
+            $( ".link" ).button();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="accordion">
+        <h3><a href="#">TV</a></h3>
+        <div>
+            <a class="link" href="http://affiliate.zap2it.com/tvlistings/ZCSGrid.do?stnNum=17398&channel=11">CBC listing</a> <br/>
+            <a class="link" href="http://affiliate.zap2it.com/tvlistings/ZCSGrid.do?stnNum=16544&channel=9">CTV listing</a> <br/>
+        </div>
+        <h3><a href="#">Exchanges</a></h3>
+        <div>
+            <a class="link" href="http://stackoverflow.com">Stack Overflow</a> <br/>
+            <a class="link" href="http://superuser.com">Super User</a> <br/>
+            <a class="link" href="http://english.stackexchange.com">English</a> <br/>
+            <a class="link" href="http://music.stackexchange.com">Music</a> <br/>
+            <a class="link" href="http://programmers.stackexchange.com">Programmer's</a> <br/>
+        </div>
+    </div>
+</body>
+</html>
