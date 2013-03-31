@@ -37,6 +37,7 @@ task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) << {
         zipfileset(dir: "${buildDir}/jars", prefix: "jars")
         zipfileset(file: "${buildDir}/libs/${project.deliverable}.jar")
         zipfileset(file: "resources/homer.properties", prefix: "resources")
+        zipfileset(file: "resources/links.txt")
     }
 
     ant.unzip(src: "${buildDir}/${project.deliverable}.zip", dest: project.stagingDir)
