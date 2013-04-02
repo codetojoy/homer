@@ -39,6 +39,7 @@ task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) << {
         zipfileset(file: "resources/homer.properties", prefix: "resources")
         zipfileset(file: "resources/template.html", prefix: "resources")
         zipfileset(file: "resources/links.txt")
+        zipfileset(src: "resources/jquery.zip", prefix: "resources")
     }
 
     ant.unzip(src: "${buildDir}/${project.deliverable}.zip", dest: project.stagingDir)
