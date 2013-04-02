@@ -5,6 +5,7 @@ class Model {
     def jQueryPath
     def jQueryUiPath
     def jQueryUiCssPath
+    def templateFile
     
     def linksList = []
     def currentLinks = null
@@ -13,6 +14,7 @@ class Model {
         this.jQueryPath = config.jQueryPath
         this.jQueryUiPath = config.jQueryUiPath
         this.jQueryUiCssPath = config.jQueryUiCssPath
+        this.templateFile = config.templateFile
     }
     
     public void build(File file) {

@@ -1,34 +1,29 @@
 
 package net.codetojoy.homer
 
-class Template {
-    final static String HEADER = """
-<html>
-<head>
-    <script type="text/javascript" src="%s"></script>
-    <script type="text/javascript" src="%s"></script>
-    <link rel="stylesheet" href="%s"></link>
-
-    <script>
-        \$(function() {
-            \$( "#accordion" ).accordion({ autoHeight : false, clearStyle : true});
-            \$( ".link" ).button();
-        });
-    </script>
-</head>
-<body>
-<div id="accordion">"""
-
-    final static String FOOTER = "</div></body></html>"
+class Template {    
+    private final String HOMER_JQUERY = "HOMER_JQUERY"
+    private final String HOMER_JQUERY_UI = "HOMER_JQUERY_UI"
+    private final String HOMER_JQUERY_UI_CSS = "HOMER_JQUERY_UI_CSS"
+    private final String HOMER_BODY = "HOMER_BODY"
     
     public String stamp(Model model) {
-        String mainHeader = String.format(HEADER, model.jQueryPath,
-                                            model.jQueryUiPath,
-                                            model.jQueryUiCssPath)
-
-        def buffer = new StringBuilder(mainHeader + "\n")
+        String text = new File(model.templateFile).getText()
         
-        model.linksList.each { links ->
+        text = text.replace(HOMER_JQUERY_UI_CSS, model.jQueryUiCssPath)
+        text = text.replace(HOMER_JQUERY_UI, model.jQueryUiPath)
+        text = text.replace(HOMER_JQUERY, model.jQueryPath)
+        
+        def body = buildBody(model.linksList)
+        text = text.replace(HOMER_BODY, body)
+        
+        return text
+    }
+    
+    String buildBody(def linksList) {
+        def buffer = new StringBuilder()
+        
+        linksList.each { links ->
             def header = links.header
             buffer.append("<h3><a href='#'>${header}</a></h3>" + "\n")
             buffer.append("<div>" + "\n")
@@ -42,7 +37,6 @@ class Template {
             buffer.append("</div>" + "\n")
         }
         
-        buffer.append(FOOTER)
         return buffer.toString()
     }
 }
