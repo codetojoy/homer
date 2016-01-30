@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:1.6.4'
+    compile 'org.codehaus.groovy:groovy-all:1.6.4'
     releaseJars 'org.codehaus.groovy:groovy-all:1.6.4'
 }
 
@@ -40,7 +40,6 @@ task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) << {
         zipfileset(file: "resources/template.html", prefix: "resources")
         zipfileset(file: "resources/links.txt")
         zipfileset(file: "resources/runHomer.bat")
-        zipfileset(src: "resources/jquery.zip", prefix: "resources")
     }
 
     ant.unzip(src: "${buildDir}/${project.deliverable}.zip", dest: project.stagingDir)
