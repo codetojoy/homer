@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:1.6.4'
-    releaseJars 'org.codehaus.groovy:groovy-all:1.6.4'
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    releaseJars 'org.codehaus.groovy:groovy-all:2.4.5'
 }
 
 task init {
@@ -29,7 +29,7 @@ task copyReleaseJars(type: Copy, dependsOn: 'init') {
 jar.archiveName "${project.deliverable}.jar"
 jar.manifest {
     attributes 'Main-Class' : project.mainClass 
-    attributes 'Class-Path' : 'jars/groovy-all-1.6.4.jar'
+    attributes 'Class-Path' : 'jars/groovy-all-2.4.5.jar'
 }
 
 task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) << {
@@ -38,6 +38,7 @@ task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) << {
         zipfileset(file: "${buildDir}/libs/${project.deliverable}.jar")
         zipfileset(file: "resources/homer.properties", prefix: "resources")
         zipfileset(file: "resources/template.html", prefix: "resources")
+        zipfileset(file: "resources/template.button.html", prefix: "resources")
         zipfileset(file: "resources/links.txt")
         zipfileset(file: "resources/runHomer.bat")
     }
