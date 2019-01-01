@@ -1,48 +1,25 @@
 
+apply plugin: 'application'
 apply plugin: 'groovy'
 
-configurations {
-    releaseJars
-}
+mainClassName = 'net.codetojoy.homer.Main'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
-    releaseJars 'org.codehaus.groovy:groovy-all:2.4.5'
+    runtime 'org.codehaus.groovy:groovy-all:2.4.5'
 }
 
-task init {
-    delete "${buildDir}/jars"
-    mkdir "${buildDir}/jars"
-    delete stagingDir
-    mkdir stagingDir
+project.ext.stagingDir = "${projectDir}/staging"
+
+installDist.doFirst {
+    ant.delete(dir: project.ext.stagingDir)
+    ant.mkdir(dir: project.ext.stagingDir)
 }
 
-task copyReleaseJars(type: Copy, dependsOn: 'init') {
-    into "${buildDir}/jars"
-    from configurations.releaseJars
+installDist {
+    into project.stagingDir
 }
-
-jar.archiveName "${project.deliverable}.jar"
-jar.manifest {
-    attributes 'Main-Class' : project.mainClass 
-    attributes 'Class-Path' : 'jars/groovy-all-2.4.5.jar'
-}
-
-task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) << {
-    ant.zip(destfile: "${buildDir}/${project.deliverable}.zip") {
-        zipfileset(dir: "${buildDir}/jars", prefix: "jars")
-        zipfileset(file: "${buildDir}/libs/${project.deliverable}.jar")
-        zipfileset(file: "resources/homer.properties", prefix: "resources")
-        zipfileset(file: "resources/template.html", prefix: "resources")
-        zipfileset(file: "resources/template.button.html", prefix: "resources")
-        zipfileset(file: "resources/links.txt")
-        zipfileset(file: "resources/runHomer.bat")
-    }
-
-    ant.unzip(src: "${buildDir}/${project.deliverable}.zip", dest: project.stagingDir)
-}
-

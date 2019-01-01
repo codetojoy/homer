@@ -1,0 +1,12 @@
+
+Intro
+PEI Devs FAQ, https://github.com/peidevs/Event_Resources/blob/master/TalkFAQ.md
+
+Presentations Patterns
+Website, http://presentationpatterns.com/
+Videos, https://www.safaribooksonline.com/library/view/presentation-patterns/9781491954980/part17.html
+Glossary, http://presentationpatterns.com/glossary/
+ 
+
+
+
