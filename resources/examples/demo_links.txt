@@ -1,0 +1,27 @@
+
+PEI Devs
+website, https://peidevs.github.io
+Meetup, http://meetup.com/pei-developers
+peidevs, https://www.github.com/peidevs
+
+GitHub
+codetojoy, https://www.github.com/codetojoy
+peidevs, https://www.github.com/peidevs
+ODBC, https://www.github.com/peidevs/OpenDataBookClub
+
+Twitter
+Twitter, https://www.twitter.com
+codetojoy, https://www.twitter.com/codetojoy
+30_for_60, https://www.twitter.com/30_for_60
+
+ENVs
+Jenkins, https://stackoverflow.com
+DEV, https://stackoverflow.com
+QA, https://stackoverflow.com
+UAT, https://stackoverflow.com
+PROD, https://stackoverflow.com
+
+HR
+Holiday Schedule, https://www.merriam-webster.com/word-of-the-day
+Expense Reports, http://bellaliantcentre.ca/
+
