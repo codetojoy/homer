@@ -1,5 +1,8 @@
+#!/bin/bash
 
-gradle clean build
+set -e 
+
+./gradlew clean build
 
 mkdir build/distributions/tmp
 cd build/distributions/tmp

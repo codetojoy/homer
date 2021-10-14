@@ -1,3 +1,6 @@
+#!/bin/bash
+
+set -e
 
 echo "starting..."
 cd staging
