@@ -2,6 +2,8 @@
 
 set -e 
 
+stat links.txt > /dev/null 2>&1
+
 ORIG_DIR=$PWD
 
 ./gradlew clean build
