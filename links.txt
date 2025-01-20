@@ -1,0 +1,15 @@
+
+CSS
+zombies 2, https://mastery.games/post/flexboxzombies2/
+froggy, https://flexboxfroggy.com/
+garden, https://cssgridgarden.com/
+
+reddit
+CSS, https://www.reddit.com/r/css/ 
+cybersecurity, https://www.reddit.com/r/cybersecurity/
+experienced devs, https://www.reddit.com/r/ExperiencedDevs/
+Java, https://www.reddit.com/r/java
+JS, https://www.reddit.com/r/javascript/
+linear alg, https://www.reddit.com/r/LinearAlgebra/
+scrum, https://www.reddit.com/r/scrum/
+stats, https://www.reddit.com/r/statistics/
