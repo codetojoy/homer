@@ -14,3 +14,10 @@ To run:
     * edit links.txt as desired
     * to generate `home.html`:
         * usage: ./bin/homer links.txt homer.properties [accordion|button]
+
+### Versions
+
+- Java 21
+- Gradle 8.12
+- Groovy 5 alpha 
+
